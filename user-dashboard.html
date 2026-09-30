@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Stackly Commercial Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        h1, h2, h3, h4, h5, h6, .serif-font { font-family: 'Playfair Display', serif; }
+        .text-gold { color: #7c3aed; }
+        .bg-gold { background-color: #7c3aed; }
+        .border-gold { border-color: #7c3aed; }
+        .sidebar-link { transition: all 0.3s; }
+        .sidebar-link:hover, .sidebar-link.active { background-color: #1f2937; color: #7c3aed; border-left: 4px solid #7c3aed; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden text-gray-800">
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="dashboard-sidebar" class="w-64 bg-[#111827] text-gray-400 flex flex-col h-full shadow-2xl absolute md:relative z-30 shrink-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+        <div class="h-20 flex items-center px-6 border-b border-gray-800">
+            <a href="user-dashboard.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+        </div>
+        
+        <nav id="sidebar-links" class="flex-1 overflow-y-auto py-6 space-y-1">
+            <a href="404.html" data-target="dashboard-overview" class="sidebar-link active flex items-center px-6 py-3 text-sm font-medium">
+                <i class="fa-solid fa-border-all w-5 mr-3"></i> Dashboard
+            </a>
+            <a href="404.html" data-target="dashboard-saved" class="sidebar-link flex items-center px-6 py-3 text-sm font-medium">
+                <i class="fa-regular fa-heart w-5 mr-3"></i> Saved Properties
+            </a>
+            <a href="404.html" data-target="dashboard-viewings" class="sidebar-link flex items-center px-6 py-3 text-sm font-medium">
+                <i class="fa-regular fa-calendar-check w-5 mr-3"></i> Upcoming Viewings
+            </a>
+            <a href="404.html" data-target="dashboard-vip" class="sidebar-link flex items-center px-6 py-3 text-sm font-medium">
+                <i class="fa-solid fa-concierge-bell w-5 mr-3"></i> VIP Concierge
+            </a>
+            <a href="404.html" data-target="dashboard-messages" class="sidebar-link flex items-center px-6 py-3 text-sm font-medium">
+                <i class="fa-regular fa-envelope w-5 mr-3"></i> Messages <span class="ml-auto bg-gold text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+            </a>
+            <a href="404.html" data-target="dashboard-settings" class="sidebar-link flex items-center px-6 py-3 text-sm font-medium">
+                <i class="fa-solid fa-gear w-5 mr-3"></i> Settings
+            </a>
+        </nav>
+        
+        <div class="p-6 border-t border-gray-800">
+            <!-- Profile Info Box -->
+            <div class="flex items-center bg-gray-800/40 border border-gray-700/60 rounded-xl p-3 mb-4 shadow-sm hover:border-gray-600 transition">
+                <!-- <img src="assets/images/63b9622722.webp" alt="User Avatar" class="w-10 h-10 rounded-full mr-3 shrink-0"> -->
+                <div class="overflow-hidden">
+                    <p class="text-sm font-bold text-white truncate">User</p>
+                    <p id="sidebar-email" class="text-[11px] text-gray-400 truncate">alexander@example.com</p>
+                </div>
+            </div>
+            
+            <a href="login.html" class="flex items-center justify-center w-full text-sm font-bold text-gray-400 hover:text-white bg-gray-800/30 hover:bg-red-500/10 hover:text-red-400 py-2.5 rounded-lg transition border border-transparent hover:border-red-500/20">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full relative overflow-y-auto bg-gray-50 w-full min-w-0 overflow-x-hidden">
+        <!-- Topbar -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-8 sticky top-0 z-10 shrink-0">
+            <div class="flex items-center w-full max-w-md">
+                <button id="sidebar-toggle-btn" class="md:hidden mr-4 text-gray-500 hover:text-gold focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="hidden md:flex items-center text-gray-500 bg-gray-100 px-4 py-2 rounded-lg w-full">
+                <!-- <i class="fa-solid fa-search mr-3"></i> -->
+                <!-- <input type="text" placeholder="Search properties, messages..." class="bg-transparent border-none focus:outline-none w-full text-sm text-gray-800"> -->
+            </div>
+            
+            <div class="flex items-center space-x-6 ml-4">
+                <a href="404.html" class="relative text-gray-500 hover:text-gold transition">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </a>
+                <div class="flex items-center space-x-3 border-l border-gray-200 pl-6 cursor-pointer group">
+                    <!-- <img src="assets/images/c7d4b63af6.webp" alt="User Profile" class="w-10 h-10 rounded-full shadow-sm"> -->
+                    <div class="hidden md:block">
+                        <p class="text-sm font-bold text-gray-900 group-hover:text-gold transition">User</p>
+                        <p id="navbar-email" class="text-xs text-gray-500">Premium Member</p>
+                    </div>
+                    <!-- <i class="fa-solid fa-chevron-down text-gray-400 text-xs ml-2 hidden sm:block"></i> -->
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard-overview" class="dashboard-section p-4 md:p-8">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold serif-font text-gray-900 mb-2">Welcome back,</h1>
+                <p class="text-gray-500">Here is an overview of your Commercial Real Estate journey.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Stat Card 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-1">Saved Properties</p>
+                        <h3 class="text-3xl font-bold serif-font text-gray-900">12</h3>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-gold text-xl border border-gray-100">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                </div>
+                
+                <!-- Stat Card 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-1">Upcoming Viewings</p>
+                        <h3 class="text-3xl font-bold serif-font text-gray-900">2</h3>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-gold text-xl border border-gray-100">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                </div>
+
+                <!-- Stat Card 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md transition">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-1">Concierge Requests</p>
+                        <h3 class="text-3xl font-bold serif-font text-gray-900">1</h3>
+                    </div>
+                    <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-gold text-xl border border-gray-100">
+                        <i class="fa-solid fa-concierge-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saved Properties Section -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden mb-10">
+                <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center">
+                    <h3 class="text-xl font-bold serif-font text-gray-900">Recently Saved Properties</h3>
+                    <a href="404.html" class="text-sm font-bold text-gold hover:text-gray-900 transition">View All &rarr;</a>
+                </div>
+                
+                <div class="p-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    <!-- Property 1 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-xl mb-4 h-48">
+                            <img src="assets/images/4b65ad6cc5.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Villa">
+                            <button onclick="window.location.href='404.html'" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 shadow-sm hover:scale-110 transition"><i class="fa-solid fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1 group-hover:text-gold transition">Beverly Hills Corporate Office</h4>
+                                <p class="text-gray-500 text-sm"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Beverly Hills, CA</p>
+                            </div>
+                            <p class="font-bold text-gray-900">$12,500,000</p>
+                        </div>
+                    </div>
+
+                    <!-- Property 2 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-xl mb-4 h-48">
+                            <img src="assets/images/eea3f3ee2f.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Penthouse">
+                            <button onclick="window.location.href='404.html'" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 shadow-sm hover:scale-110 transition"><i class="fa-solid fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1 group-hover:text-gold transition">Manhattan Penthouse</h4>
+                                <p class="text-gray-500 text-sm"><i class="fa-solid fa-location-dot text-gold mr-1"></i> New York, NY</p>
+                            </div>
+                            <p class="font-bold text-gray-900">$8,900,000</p>
+                        </div>
+                    </div>
+
+                    <!-- Property 3 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-xl mb-4 h-48">
+                            <img src="assets/images/c498c8339e.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Estate">
+                            <button onclick="window.location.href='404.html'" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 shadow-sm hover:scale-110 transition"><i class="fa-solid fa-heart"></i></button>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1 group-hover:text-gold transition">Modern Alpine Estate</h4>
+                                <p class="text-gray-500 text-sm"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Aspen, CO</p>
+                            </div>
+                            <p class="font-bold text-gray-900">$15,200,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Saved Properties Section (Full) -->
+        <div id="dashboard-saved" class="dashboard-section p-4 md:p-8 hidden">
+            <div class="mb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold serif-font text-gray-900 mb-2">My Saved Properties</h2>
+                    <p class="text-gray-500">View and manage the luxury listings you've bookmarked.</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="window.location.href='404.html'" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-sm font-bold hover:border-gold hover:text-gold transition">Filter <i class="fa-solid fa-filter ml-1"></i></button>
+                    <button onclick="window.location.href='404.html'" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-sm font-bold hover:border-gold hover:text-gold transition">Sort By <i class="fa-solid fa-sort ml-1"></i></button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                <!-- Property 1 -->
+                <div class="group cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm p-4 hover:shadow-lg transition">
+                    <div class="relative overflow-hidden rounded-xl mb-4 h-56">
+                        <img src="assets/images/4b65ad6cc5.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Villa">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider text-gray-900 rounded-full">Just Listed</div>
+                        <button onclick="window.location.href='404.html'" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 shadow-sm hover:scale-110 transition"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-1 group-hover:text-gold transition">Beverly Hills Corporate Office</h4>
+                            <p class="text-gray-500 text-sm"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Beverly Hills, CA</p>
+                        </div>
+                        <p class="font-bold text-xl text-gray-900">$12,500,000</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <div class="flex space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-bed text-gray-300 mr-1"></i> 6 Beds</span>
+                            <span><i class="fa-solid fa-bath text-gray-300 mr-1"></i> 8 Baths</span>
+                            <span><i class="fa-solid fa-vector-square text-gray-300 mr-1"></i> 10k sqft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="group cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm p-4 hover:shadow-lg transition">
+                    <div class="relative overflow-hidden rounded-xl mb-4 h-56">
+                        <img src="assets/images/eea3f3ee2f.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Penthouse">
+                        <button onclick="window.location.href='404.html'" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 shadow-sm hover:scale-110 transition"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-1 group-hover:text-gold transition">Manhattan Penthouse</h4>
+                            <p class="text-gray-500 text-sm"><i class="fa-solid fa-location-dot text-gold mr-1"></i> New York, NY</p>
+                        </div>
+                        <p class="font-bold text-xl text-gray-900">$8,900,000</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <div class="flex space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-bed text-gray-300 mr-1"></i> 4 Beds</span>
+                            <span><i class="fa-solid fa-bath text-gray-300 mr-1"></i> 4.5 Baths</span>
+                            <span><i class="fa-solid fa-vector-square text-gray-300 mr-1"></i> 4.5k sqft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="group cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm p-4 hover:shadow-lg transition">
+                    <div class="relative overflow-hidden rounded-xl mb-4 h-56">
+                        <img src="assets/images/c498c8339e.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Estate">
+                        <div class="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">Price Drop</div>
+                        <button onclick="window.location.href='404.html'" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 shadow-sm hover:scale-110 transition"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg mb-1 group-hover:text-gold transition">Modern Alpine Estate</h4>
+                            <p class="text-gray-500 text-sm"><i class="fa-solid fa-location-dot text-gold mr-1"></i> Aspen, CO</p>
+                        </div>
+                        <p class="font-bold text-xl text-gray-900">$15,200,000</p>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <div class="flex space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-bed text-gray-300 mr-1"></i> 7 Beds</span>
+                            <span><i class="fa-solid fa-bath text-gray-300 mr-1"></i> 9 Baths</span>
+                            <span><i class="fa-solid fa-vector-square text-gray-300 mr-1"></i> 12k sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Viewings Section -->
+        <div id="dashboard-viewings" class="dashboard-section p-4 md:p-8 hidden">
+            <div class="mb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold serif-font text-gray-900 mb-2">Upcoming Viewings</h2>
+                    <p class="text-gray-500">Your scheduled property tours and agent meetings.</p>
+                </div>
+                <button onclick="window.location.href='404.html'" class="bg-gray-900 text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-gold transition">Request Viewing</button>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Viewing 1 -->
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col sm:flex-row justify-between items-center hover:shadow-md transition gap-6">
+                    <div class="flex items-center space-x-6 w-full sm:w-auto">
+                        <div class="w-20 h-20 bg-gold/10 text-gold rounded-xl flex flex-col items-center justify-center border border-gold/20 shrink-0 shadow-inner">
+                            <span class="text-xs font-bold uppercase tracking-wider">Oct</span>
+                            <span class="text-2xl font-black">24</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg hover:text-gold cursor-pointer transition">Beverly Hills Corporate Office Tour</h4>
+                            <p class="text-gray-500 text-sm mb-2"><i class="fa-regular fa-clock mr-1"></i> 10:00 AM PST</p>
+                            <div class="flex items-center space-x-2">
+                                <img src="assets/images/2b63d37b39.webp" class="w-6 h-6 rounded-full border border-gray-200">
+                                <span class="text-xs font-bold text-gray-600">Sarah Jenkins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                        <span class="px-4 py-1.5 bg-green-50 text-green-600 font-bold text-xs rounded-full uppercase tracking-wide border border-green-100">Confirmed</span>
+                        <div class="flex space-x-2">
+                            <button onclick="window.location.href='404.html'" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-xs font-bold hover:bg-gray-50 transition">Reschedule</button>
+                            <button onclick="window.location.href='404.html'" class="px-4 py-2 border border-red-100 text-red-500 rounded-lg text-xs font-bold hover:bg-red-50 transition">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viewing 2 -->
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col sm:flex-row justify-between items-center hover:shadow-md transition gap-6">
+                    <div class="flex items-center space-x-6 w-full sm:w-auto">
+                        <div class="w-20 h-20 bg-gray-50 text-gray-500 rounded-xl flex flex-col items-center justify-center border border-gray-100 shrink-0">
+                            <span class="text-xs font-bold uppercase tracking-wider">Nov</span>
+                            <span class="text-2xl font-black">02</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg hover:text-gold cursor-pointer transition">Manhattan Penthouse Virtual Tour</h4>
+                            <p class="text-gray-500 text-sm mb-2"><i class="fa-solid fa-video mr-1"></i> 2:00 PM EST (Zoom)</p>
+                            <div class="flex items-center space-x-2">
+                                <img src="assets/images/fd7d3305b6.webp" class="w-6 h-6 rounded-full border border-gray-200">
+                                <span class="text-xs font-bold text-gray-600">Marcus W.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                        <span class="px-4 py-1.5 bg-yellow-50 text-yellow-600 font-bold text-xs rounded-full uppercase tracking-wide border border-yellow-100">Pending</span>
+                        <div class="flex space-x-2">
+                            <button onclick="window.location.href='404.html'" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-xs font-bold hover:bg-gray-50 transition">Reschedule</button>
+                            <button onclick="window.location.href='404.html'" class="px-4 py-2 border border-red-100 text-red-500 rounded-lg text-xs font-bold hover:bg-red-50 transition">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viewing 3 -->
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col sm:flex-row justify-between items-center hover:shadow-md transition gap-6 opacity-60">
+                    <div class="flex items-center space-x-6 w-full sm:w-auto">
+                        <div class="w-20 h-20 bg-gray-50 text-gray-400 rounded-xl flex flex-col items-center justify-center border border-gray-100 shrink-0">
+                            <span class="text-xs font-bold uppercase tracking-wider">Sep</span>
+                            <span class="text-2xl font-black">14</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg line-through decoration-gray-300">Modern Alpine Estate</h4>
+                            <p class="text-gray-500 text-sm mb-2"><i class="fa-regular fa-clock mr-1"></i> Completed</p>
+                            <div class="flex items-center space-x-2">
+                                <img src="assets/images/2b63d37b39.webp" class="w-6 h-6 rounded-full border border-gray-200">
+                                <span class="text-xs font-bold text-gray-600">Sarah Jenkins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                        <span class="px-4 py-1.5 bg-gray-100 text-gray-500 font-bold text-xs rounded-full uppercase tracking-wide border border-gray-200">Past</span>
+                        <button onclick="window.location.href='404.html'" class="px-4 py-2 bg-gray-900 text-white rounded-lg text-xs font-bold hover:bg-gold transition">Leave Feedback</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIP Concierge Section -->
+        <div id="dashboard-vip" class="dashboard-section p-4 md:p-8 hidden">
+            <div class="mb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold serif-font text-gray-900 mb-2">VIP Concierge Services</h2>
+                    <p class="text-gray-500">Request exclusive services tailored to your luxury Business Operations.</p>
+                </div>
+                <button onclick="window.location.href='404.html'" class="px-6 py-2.5 border-2 border-gold text-gray-900 rounded-lg text-sm font-bold hover:bg-gold hover:text-gray-900 transition">My Requests</button>
+            </div>
+            
+            <h3 class="font-bold text-gray-900 mb-4 uppercase tracking-wider text-sm">Available Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:border-gold hover:shadow-md transition group cursor-pointer text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <i class="fa-solid fa-plane-departure text-4xl text-gray-300 group-hover:text-gold transition mb-4 block"></i>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Private Aviation</h3>
+                    <p class="text-gray-500 text-sm">Charter private jets or helicopters for your property viewing tours.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:border-gold hover:shadow-md transition group cursor-pointer text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <i class="fa-solid fa-paintbrush text-4xl text-gray-300 group-hover:text-gold transition mb-4 block"></i>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Interior Design</h3>
+                    <p class="text-gray-500 text-sm">Consult with world-class interior designers for your new estate.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:border-gold hover:shadow-md transition group cursor-pointer text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <i class="fa-solid fa-car text-4xl text-gray-300 group-hover:text-gold transition mb-4 block"></i>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Luxury Car Rental</h3>
+                    <p class="text-gray-500 text-sm">Reserve premium vehicles for your stay in any major city.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:border-gold hover:shadow-md transition group cursor-pointer text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <i class="fa-solid fa-utensils text-4xl text-gray-300 group-hover:text-gold transition mb-4 block"></i>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Private Chef</h3>
+                    <p class="text-gray-500 text-sm">Hire Michelin-star chefs for your private events and dinners.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:border-gold hover:shadow-md transition group cursor-pointer text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <i class="fa-solid fa-sailboat text-4xl text-gray-300 group-hover:text-gold transition mb-4 block"></i>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Yacht Charters</h3>
+                    <p class="text-gray-500 text-sm">Exclusive yacht charters available across global luxury marinas.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:border-gold hover:shadow-md transition group cursor-pointer text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <i class="fa-solid fa-palette text-4xl text-gray-300 group-hover:text-gold transition mb-4 block"></i>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Art Curation</h3>
+                    <p class="text-gray-500 text-sm">Source fine art and exclusive pieces for your luxury portfolio.</p>
+                </div>
+            </div>
+            
+            <h3 class="font-bold text-gray-900 mb-4 uppercase tracking-wider text-sm">Active Requests</h3>
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div class="p-6 flex items-center justify-between hover:bg-gray-50 transition border-b border-gray-50 cursor-pointer">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-plane"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Private Jet to Aspen</h4>
+                            <p class="text-gray-500 text-sm">Requested for Oct 22, 2026 - Gulfstream G650</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-600 font-bold text-xs rounded-full uppercase tracking-wide border border-blue-100 inline-block mb-1">Arranging</span>
+                        <p class="text-xs text-gray-400">Updated 2 hrs ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Section -->
+        <div id="dashboard-messages" class="dashboard-section p-4 md:p-8 hidden h-full flex flex-col">
+            <div class="mb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold serif-font text-gray-900 mb-2">Messages</h2>
+                    <p class="text-gray-500">Communicate directly with your luxury advisors.</p>
+                </div>
+                <button onclick="window.location.href='404.html'" class="bg-gold text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-[#6d28d9] transition shadow-sm"><i class="fa-solid fa-pen-to-square mr-2"></i>New Message</button>
+            </div>
+            
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex-1 flex flex-col md:flex-row h-[600px] md:h-[600px] min-h-0">
+                <!-- Message List Sidebar -->
+                <div class="w-full md:w-1/3 border-r border-gray-100 flex flex-col bg-gray-50/50">
+                    <div class="p-4 border-b border-gray-100">
+                        <div class="relative">
+                            <i class="fa-solid fa-search absolute left-3 top-3.5 text-gray-400 text-sm"></i>
+                            <input type="text" placeholder="Search messages..." class="w-full pl-9 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gold transition">
+                        </div>
+                    </div>
+                    <div class="overflow-y-auto flex-1">
+                        <!-- Active Thread -->
+                        <div class="p-4 border-b border-gray-100 bg-white border-l-4 border-l-gold cursor-pointer transition">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-gray-900 text-sm">Sarah Jenkins</h4>
+                                <span class="text-xs text-gray-400">10:42 AM</span>
+                            </div>
+                            <p class="text-xs font-bold text-gray-800 mb-1 truncate">Beverly Hills Property Details</p>
+                            <p class="text-xs text-gray-500 truncate">I've attached the floor plans you requested...</p>
+                        </div>
+                        
+                        <!-- Unread Thread -->
+                        <div class="p-4 border-b border-gray-100 hover:bg-white cursor-pointer transition relative">
+                            <div class="absolute right-4 top-4 w-2 h-2 bg-gold rounded-full"></div>
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-gray-900 text-sm">Marcus W.</h4>
+                                <span class="text-xs text-gray-400">Yesterday</span>
+                            </div>
+                            <p class="text-xs font-bold text-gray-900 mb-1 truncate">Virtual Tour Confirmation</p>
+                            <p class="text-xs text-gray-500 truncate">Great, I'll send over the Zoom link shortly.</p>
+                        </div>
+                        
+                        <!-- Read Thread -->
+                        <div class="p-4 border-b border-gray-100 hover:bg-white cursor-pointer transition opacity-70">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-gray-900 text-sm">System Notification</h4>
+                                <span class="text-xs text-gray-400">Oct 12</span>
+                            </div>
+                            <p class="text-xs font-bold text-gray-800 mb-1 truncate">Welcome to Stackly VIP</p>
+                            <p class="text-xs text-gray-500 truncate">Your premium concierge services are now active.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Message Content Area -->
+                <div class="w-full md:w-2/3 flex flex-col bg-white">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/30">
+                        <div class="flex items-center space-x-3">
+                            <div class="relative">
+                                <img src="assets/images/2b63d37b39.webp" class="w-10 h-10 rounded-full border border-gray-200">
+                                <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Sarah Jenkins</h4>
+                                <p class="text-xs text-gray-500">Senior Luxury Advisor</p>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='404.html'" class="text-gray-400 hover:text-gold transition"><i class="fa-solid fa-ellipsis-vertical px-2"></i></button>
+                    </div>
+                    
+                    <div class="flex-1 p-6 overflow-y-auto space-y-6">
+                        <!-- Received Message -->
+                        <div class="flex items-start space-x-3">
+                            <img src="assets/images/2b63d37b39.webp" class="w-8 h-8 rounded-full border border-gray-200 mt-1">
+                            <div>
+                                <div class="bg-gray-100 text-gray-800 p-4 rounded-2xl rounded-tl-none text-sm max-w-md">
+                                    Good morning Alexander! I hope you're having a great week. I've secured the viewing for the Beverly Hills Corporate Office for Oct 24th at 10 AM as requested.
+                                </div>
+                                <span class="text-[10px] text-gray-400 mt-1 block">10:30 AM</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Sent Message -->
+                        <div class="flex items-start space-x-3 justify-end">
+                            <div>
+                                <div class="bg-gray-900 text-white p-4 rounded-2xl rounded-tr-none text-sm max-w-md">
+                                    Excellent, thank you Sarah. Could you also send over the floor plans before we meet?
+                                </div>
+                                <span class="text-[10px] text-gray-400 mt-1 block text-right">10:35 AM</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Received Message -->
+                        <div class="flex items-start space-x-3">
+                            <img src="assets/images/2b63d37b39.webp" class="w-8 h-8 rounded-full border border-gray-200 mt-1">
+                            <div>
+                                <div class="bg-gray-100 text-gray-800 p-4 rounded-2xl rounded-tl-none text-sm max-w-md">
+                                    I've attached the floor plans you requested. Let me know if you need anything else!
+                                    <div class="mt-3 flex items-center space-x-2 p-2 bg-white rounded-lg border border-gray-200">
+                                        <i class="fa-solid fa-file-pdf text-red-500 text-xl ml-2"></i>
+                                        <div>
+                                            <p class="text-xs font-bold">Floor_Plans_BH.pdf</p>
+                                            <p class="text-[10px] text-gray-400">2.4 MB</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] text-gray-400 mt-1 block">10:42 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Input Area -->
+                    <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                        <div class="flex items-center space-x-3">
+                            <button onclick="window.location.href='404.html'" class="text-gray-400 hover:text-gold transition p-2"><i class="fa-solid fa-paperclip text-lg"></i></button>
+                            <input type="text" placeholder="Type your message..." class="flex-1 bg-white border border-gray-200 rounded-full px-5 py-3 text-sm focus:outline-none focus:border-gold transition">
+                            <button onclick="window.location.href='404.html'" class="w-10 h-10 bg-gold text-white rounded-full flex items-center justify-center hover:bg-[#6d28d9] transition shadow-sm"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="dashboard-settings" class="dashboard-section p-4 md:p-8 hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold serif-font text-gray-900 mb-2">Account Settings</h2>
+                <p class="text-gray-500">Manage your profile, security, and notification preferences.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Profile Settings -->
+                <div class="lg:col-span-2 space-y-8">
+                    <form id="profile-form" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+                        <h3 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm border-b border-gray-100 pb-4">Personal Information</h3>
+                        <div class="flex items-center space-x-6 mb-8">
+                            <img src="assets/images/63b9622722.webp" class="w-20 h-20 rounded-full shadow-sm">
+                            <div>
+                                <button type="button" onclick="window.location.href='404.html'" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg text-sm font-bold hover:bg-gray-50 transition mb-2 block">Change Avatar</button>
+                                <p class="text-xs text-gray-400">JPG, GIF or PNG. Max size of 2MB</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">First Name</label>
+                                <input type="text" id="profile-first" value="Alexander" required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Last Name</label>
+                                <input type="text" id="profile-last" value="P." required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Email Address</label>
+                            <input type="email" id="settings-email" value="alexander@example.com" required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition text-gray-500">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Phone Number</label>
+                            <input type="tel" id="profile-phone" value="+1 (555) 123-4567" required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition">
+                        </div>
+                        <p id="profile-error" class="text-red-500 text-sm hidden mb-4 font-medium">Please fill in the required fields with valid details.</p>
+                        <button type="submit" class="bg-gray-900 text-white font-bold text-sm px-6 py-3 rounded-lg hover:bg-gold transition shadow-sm w-full md:w-auto">Update Profile</button>
+                    </form>
+
+                    <form id="security-form" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+                        <h3 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm border-b border-gray-100 pb-4">Security</h3>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Current Password</label>
+                            <input type="password" id="sec-current" placeholder="••••••••" required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">New Password</label>
+                                <input type="password" id="sec-new" required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Confirm New Password</label>
+                                <input type="password" id="sec-confirm" required class="w-full border border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:bg-white focus:outline-none focus:border-gold transition">
+                            </div>
+                        </div>
+                        <p id="security-error" class="text-red-500 text-sm hidden mb-4 font-medium">Please fill in the required fields with valid details.</p>
+                        <button type="submit" class="border border-gray-200 text-gray-600 font-bold text-sm px-6 py-3 rounded-lg hover:border-gold hover:text-gold transition shadow-sm w-full md:w-auto">Change Password</button>
+                    </form>
+                </div>
+
+                <!-- Notifications & Preferences -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+                        <h3 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm border-b border-gray-100 pb-4">Notifications</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-900">New Properties</h4>
+                                    <p class="text-xs text-gray-500">Alerts for listings matching your criteria</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-900">Messages</h4>
+                                    <p class="text-xs text-gray-500">When an agent contacts you</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-900">Market Updates</h4>
+                                    <p class="text-xs text-gray-500">Monthly newsletter and stats</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-2xl shadow-sm p-8 text-white relative overflow-hidden">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-gold/20 rounded-full blur-2xl"></div>
+                        <h3 class="font-bold mb-2 serif-font text-xl text-gold">Premium Member</h3>
+                        <p class="text-sm text-gray-400 mb-6">Your VIP concierge access is active until Dec 2027.</p>
+                        <button onclick="window.location.href='404.html'" class="w-full bg-gold/20 border border-gold/50 text-gold font-bold text-sm px-4 py-2 rounded-lg hover:bg-gold hover:text-white transition">View Benefits</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Email injection
+            const loggedInEmail = localStorage.getItem('stackly_logged_in_email');
+            if (loggedInEmail) {
+                const sidebarEmailEl = document.getElementById('sidebar-email');
+                if (sidebarEmailEl) sidebarEmailEl.textContent = loggedInEmail;
+                
+                const navbarEmailEl = document.getElementById('navbar-email');
+                if (navbarEmailEl) navbarEmailEl.textContent = loggedInEmail;
+                
+                const settingsEmailEl = document.getElementById('settings-email');
+                if (settingsEmailEl) settingsEmailEl.value = loggedInEmail;
+            }
+
+            // Tab Switching Logic
+            const links = document.querySelectorAll('#sidebar-links a[data-target]');
+            const sections = document.querySelectorAll('.dashboard-section');
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active state from all links
+                    links.forEach(l => l.classList.remove('active', 'bg-gray-800', 'border-l-4', 'border-gold'));
+                    // Add active state to clicked link
+                    link.classList.add('active');
+
+                    // Hide all sections
+                    sections.forEach(sec => sec.classList.add('hidden'));
+                    
+                    // Show target section
+                    const targetId = link.getAttribute('data-target');
+                    const targetSec = document.getElementById(targetId);
+                    if (targetSec) targetSec.classList.remove('hidden');
+                });
+            });
+
+            // Form validation for Profile and Security forms
+            const profileForm = document.getElementById('profile-form');
+            if (profileForm) {
+                profileForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!profileForm.checkValidity()) {
+                        document.getElementById('profile-error').classList.remove('hidden');
+                    } else {
+                        profileForm.reset();
+                        window.location.href = '404.html';
+                    }
+                });
+            }
+
+            const securityForm = document.getElementById('security-form');
+            if (securityForm) {
+                securityForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!securityForm.checkValidity()) {
+                        document.getElementById('security-error').classList.remove('hidden');
+                    } else {
+                        securityForm.reset();
+                        window.location.href = '404.html';
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('dashboard-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const toggleBtn = document.getElementById('sidebar-toggle-btn');
+            
+            function toggleSidebar() {
+                if (sidebar) sidebar.classList.toggle('-translate-x-full');
+                if (overlay) overlay.classList.toggle('hidden');
+            }
+            
+            if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+            if (overlay) overlay.addEventListener('click', toggleSidebar);
+            
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768 && sidebar) {
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

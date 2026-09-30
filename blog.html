@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Insights for Exceptional business | Stackly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .serif-font { font-family: 'Playfair Display', serif; }
+        
+        .text-gold { color: #7c3aed; }
+        .bg-gold { background-color: #7c3aed; }
+        .hover-bg-gold-dark:hover { background-color: #6d28d9; }
+        .border-gold { border-color: #7c3aed; }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('assets/images/780efb166c.webp');
+            background-size: cover; background-position: center;
+        }
+
+        .cta-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('assets/images/f0b82080c9.webp');
+            background-size: cover; background-position: center;
+        }
+
+        /* Hover animation for buttons */
+        .btn-gold {
+            background-color: #7c3aed;
+            color: white;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-gold:hover {
+            background-color: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-card-img {
+            transition: transform 0.5s ease;
+        }
+        .group:hover .article-card-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800 bg-white">
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="fixed w-full z-50 top-0 text-white bg-transparent transition-all duration-300">
+        <div class="container mx-auto px-6 py-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="index.html" class="hover:text-[#7c3aed] transition">Home</a>
+                <a href="about.html" class="hover:text-[#7c3aed] transition">About</a>
+                <a href="service.html" class="hover:text-[#7c3aed] transition">Service</a>
+                <a href="blog.html" class="border-b-2 border-[#7c3aed] pb-1">Blog</a>
+                <a href="contact.html" class="hover:text-[#7c3aed] transition">Contact</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="login.html" class="border border-white hover:bg-white hover:text-black transition px-6 py-2 rounded-full text-sm font-medium">
+                    Login
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-white hover:text-[#7c3aed] focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-[60vh] min-h-[450px] flex items-center pt-20 relative">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <p class="text-sm text-gray-300 font-medium mb-6 flex justify-center items-center space-x-2 uppercase tracking-widest">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-gold">Blog</span>
+            </p>
+            <p class="text-gold text-xs font-bold tracking-widest uppercase mb-4">Commercial Real Estate Journal</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 serif-font leading-tight mt-8 md:mt-0">Insights for<br class="hidden md:block">Exceptional business</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light">
+                Explore the latest trends in global Commercial Real Estate, expert investment advice, and curated Business Operations stories.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="py-8 bg-gray-50 border-b border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                <a href="404.html" class="px-5 py-2 bg-gray-800 text-white text-sm rounded-full transition shadow hover:shadow-md">All Posts</a>
+                <a href="404.html" class="px-5 py-2 bg-white text-gray-700 hover:text-gold border border-gray-200 text-sm rounded-full transition hover:border-gold">Commercial Real Estate</a>
+                <a href="404.html" class="px-5 py-2 bg-white text-gray-700 hover:text-gold border border-gray-200 text-sm rounded-full transition hover:border-gold">Property Investment</a>
+                <a href="404.html" class="px-5 py-2 bg-white text-gray-700 hover:text-gold border border-gray-200 text-sm rounded-full transition hover:border-gold">Market Trends</a>
+                <a href="404.html" class="px-5 py-2 bg-white text-gray-700 hover:text-gold border border-gray-200 text-sm rounded-full transition hover:border-gold">Interior & Architecture</a>
+                <a href="404.html" class="px-5 py-2 bg-white text-gray-700 hover:text-gold border border-gray-200 text-sm rounded-full transition hover:border-gold">Luxury Business Operations</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+                <div class="w-full lg:w-7/12 relative overflow-hidden rounded-2xl shadow-2xl group">
+                    <img src="assets/images/432280aca9.webp" alt="Featured Article" class="w-full h-[400px] md:h-[500px] object-cover article-card-img">
+                    <div class="absolute top-6 left-6 bg-gold text-white text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full z-10">Featured</div>
+                </div>
+                <div class="w-full lg:w-5/12">
+                    <p class="text-gold text-xs font-bold tracking-widest uppercase mb-4">Luxury business &bull; <span class="text-gray-400">Sep 17, 2026</span></p>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 serif-font leading-tight hover:text-gold transition cursor-pointer">The Future of Smart Workspaces in Ultra-Commercial Real Estate</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        As technology rapidly evolves, high-net-worth buyers are no longer just looking for prime locations. They demand fully integrated, invisible smart workspace ecosystems that anticipate their every need while maintaining pristine architectural aesthetics.
+                    </p>
+                    <a href="404.html" class="inline-flex items-center btn-gold px-8 py-3 text-sm font-semibold group">
+                        Read Article <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold serif-font">Latest Articles</h2>
+                </div>
+                <a href="404.html" class="hidden md:inline-flex items-center text-gold font-medium hover:text-gray-900 transition">
+                    View all posts <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-300 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/7ac269dcb1.webp" alt="Blog Image" class="w-full h-full object-cover article-card-img">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Market Trends</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-400 text-xs mb-3 font-medium uppercase tracking-wider">Sep 15, 2026</p>
+                        <h3 class="text-xl font-bold serif-font mb-4 group-hover:text-gold transition line-clamp-2">Navigating the Global Luxury Market Shift</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">An in-depth analysis of how emerging markets are reshaping the landscape for high-net-worth property investments.</p>
+                        <a href="404.html" class="text-gold font-semibold text-sm hover:text-gray-900 transition flex items-center group-hover:underline">
+                            Read More <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-300 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/06a0d21389.webp" alt="Blog Image" class="w-full h-full object-cover article-card-img">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Architecture</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-400 text-xs mb-3 font-medium uppercase tracking-wider">Sep 12, 2026</p>
+                        <h3 class="text-xl font-bold serif-font mb-4 group-hover:text-gold transition line-clamp-2">The Rise of Biophilic Design in Modern Estates</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">Discover how top architects are blending nature with luxury, creating Workspaces that promote wellness and serenity.</p>
+                        <a href="404.html" class="text-gold font-semibold text-sm hover:text-gray-900 transition flex items-center group-hover:underline">
+                            Read More <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-300 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/c498c8339e.webp" alt="Blog Image" class="w-full h-full object-cover article-card-img">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Interior Design</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-400 text-xs mb-3 font-medium uppercase tracking-wider">Sep 08, 2026</p>
+                        <h3 class="text-xl font-bold serif-font mb-4 group-hover:text-gold transition line-clamp-2">Curating Art for Monumental Spaces</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">Expert tips on selecting and displaying statement art pieces that complement grand architectural proportions.</p>
+                        <a href="404.html" class="text-gold font-semibold text-sm hover:text-gray-900 transition flex items-center group-hover:underline">
+                            Read More <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-300 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/fb02a33087.webp" alt="Blog Image" class="w-full h-full object-cover article-card-img">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Property Investment</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-400 text-xs mb-3 font-medium uppercase tracking-wider">Sep 05, 2026</p>
+                        <h3 class="text-xl font-bold serif-font mb-4 group-hover:text-gold transition line-clamp-2">Why Coastal Properties Remain the Ultimate Asset</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">A detailed look at why oceanfront commercial real estate continues to yield the highest returns and hold unmatched intrinsic value.</p>
+                        <a href="404.html" class="text-gold font-semibold text-sm hover:text-gray-900 transition flex items-center group-hover:underline">
+                            Read More <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-300 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/ce32b55793.webp" alt="Blog Image" class="w-full h-full object-cover article-card-img">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Luxury Business Operations</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-400 text-xs mb-3 font-medium uppercase tracking-wider">Sep 01, 2026</p>
+                        <h3 class="text-xl font-bold serif-font mb-4 group-hover:text-gold transition line-clamp-2">Bespoke Concierge Services You Didn't Know Existed</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">From private aviation chefs to exotic car sourcing, explore the ultra-premium services defining modern luxury business.</p>
+                        <a href="404.html" class="text-gold font-semibold text-sm hover:text-gray-900 transition flex items-center group-hover:underline">
+                            Read More <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition duration-300 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/c2bc89e8e7.webp" alt="Blog Image" class="w-full h-full object-cover article-card-img">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Buying & Selling</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-400 text-xs mb-3 font-medium uppercase tracking-wider">Aug 28, 2026</p>
+                        <h3 class="text-xl font-bold serif-font mb-4 group-hover:text-gold transition line-clamp-2">The Art of the Off-Market Transaction</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">Understanding the discretion, nuances, and immense benefits of buying and selling properties privately.</p>
+                        <a href="404.html" class="text-gold font-semibold text-sm hover:text-gray-900 transition flex items-center group-hover:underline">
+                            Read More <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center md:hidden">
+                <a href="404.html" class="inline-flex items-center text-gold font-medium border border-gold rounded-full px-6 py-2 hover:bg-gold hover:text-white transition">
+                    View all posts <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Real Estate Market Insights -->
+    <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 100 100" class="w-full h-full" preserveAspectRatio="none"><path d="M0 100 L100 0 L100 100 Z" fill="#7c3aed"/></svg>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="w-full lg:w-1/3">
+                    <p class="text-gold text-xs font-bold tracking-widest uppercase mb-4">Quarterly Report</p>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 serif-font">Commercial Real Estate Market Insights</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Stay ahead of the curve. Our proprietary dashboard tracks the subtle shifts in global property demand, interest rate impacts, and elite investment opportunities.
+                    </p>
+                    <div class="p-6 bg-gray-800 rounded-2xl border border-gray-700 relative">
+                        <i class="fa-solid fa-quote-left text-3xl text-gray-700 absolute top-4 left-4"></i>
+                        <p class="text-gray-300 italic relative z-10 pt-4 text-sm leading-relaxed mb-4">
+                            "We're seeing an unprecedented migration of wealth into tangible, legacy-grade assets across Southern Europe and coastal USA."
+                        </p>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-bold text-white">AJ</div>
+                            <div>
+                                <h5 class="text-sm font-bold text-white">Arthur Jenkins</h5>
+                                <p class="text-xs text-gray-400">Head of Global Research</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Mockup Grid -->
+                <div class="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="text-gray-400 text-sm font-bold uppercase">Property Demand</h4>
+                            <i class="fa-solid fa-arrow-trend-up text-green-400"></i>
+                        </div>
+                        <div class="text-4xl font-bold text-white mb-2">+18.4%</div>
+                        <p class="text-xs text-gray-500">Year over year increase in ultra-luxury inquiries.</p>
+                        <!-- Simple visual bar -->
+                        <div class="w-full h-2 bg-gray-700 rounded-full mt-4 overflow-hidden">
+                            <div class="h-full bg-gold w-3/4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="text-gray-400 text-sm font-bold uppercase">Avg. Time on Market</h4>
+                            <i class="fa-solid fa-arrow-trend-down text-gold"></i>
+                        </div>
+                        <div class="text-4xl font-bold text-white mb-2">42 Days</div>
+                        <p class="text-xs text-gray-500">Down from 65 days in the previous quarter.</p>
+                        <div class="w-full h-2 bg-gray-700 rounded-full mt-4 overflow-hidden">
+                            <div class="h-full bg-gold w-1/2"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 md:col-span-2">
+                        <h4 class="text-gray-400 text-sm font-bold uppercase mb-4">Top Emerging Markets (Q3)</h4>
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-gold"></span><span class="font-medium">Dubai, UAE</span></div>
+                                <span class="text-green-400 font-bold">+22%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-white"></span><span class="font-medium">Miami, USA</span></div>
+                                <span class="text-green-400 font-bold">+16%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3"><span class="w-2 h-2 rounded-full bg-gray-500"></span><span class="font-medium">Lisbon, PT</span></div>
+                                <span class="text-green-400 font-bold">+12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Property Spotlight -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Exclusive Listing</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif-font">Property Spotlight</h2>
+            </div>
+            
+            <div class="bg-gray-50 rounded-3xl overflow-hidden flex flex-col lg:flex-row border border-gray-100 shadow-xl group cursor-pointer">
+                <div class="lg:w-7/12 h-[400px] lg:h-auto overflow-hidden">
+                    <img src="assets/images/f4fdab11a6.webp" alt="Property Spotlight" class="w-full h-full object-cover article-card-img">
+                </div>
+                <div class="lg:w-5/12 p-10 lg:p-16 flex flex-col justify-center">
+                    <div class="inline-block bg-gray-900 text-white text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-6 self-start">New on Market</div>
+                    <h3 class="text-3xl md:text-4xl font-bold serif-font mb-4">Villa Azure</h3>
+                    <p class="text-gray-500 mb-6 flex items-center">
+                        <i class="fa-solid fa-location-dot text-gold mr-2"></i> Amalfi Coast, Italy
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm font-semibold mb-8 pb-8 border-b border-gray-200">
+                        <div class="flex items-center text-gray-700"><i class="fa-solid fa-bed text-gold mr-2"></i> 6 Beds</div>
+                        <div class="flex items-center text-gray-700"><i class="fa-solid fa-bath text-gold mr-2"></i> 8 Baths</div>
+                        <div class="flex items-center text-gray-700"><i class="fa-solid fa-ruler-combined text-gold mr-2"></i> 12,500 sqft</div>
+                    </div>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        A modern architectural masterpiece suspended over the Mediterranean. Features include a cliffside infinity pool, private helipad, and bespoke Italian marble interiors.
+                    </p>
+                    <a href="404.html" class="inline-flex items-center text-gold font-bold text-lg hover:text-gray-900 transition">
+                        Explore Property <i class="fa-solid fa-arrow-right ml-3 transform group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Advice -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">Expert Advice</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Master the nuances of the luxury market with guidance from our top advisors.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-key text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold serif-font mb-3">Buying Strategies</h3>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">How to negotiate in a seller's market, hidden costs of luxury Workspaces, and assessing long-term structural value.</p>
+                    <a href="404.html" class="text-sm font-bold text-gray-900 hover:text-gold transition">Read Guides &rarr;</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-line text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold serif-font mb-3">Investment Advice</h3>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Diversifying portfolios, spotting up-and-coming ZIP codes, and the ROI of ultra-luxury property development.</p>
+                    <a href="404.html" class="text-sm font-bold text-gray-900 hover:text-gold transition">Read Guides &rarr;</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-house-user text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold serif-font mb-3">Property Management</h3>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Maintaining multi-million dollar estates, staffing essentials, and protecting assets while you are away.</p>
+                    <a href="404.html" class="text-sm font-bold text-gray-900 hover:text-gold transition">Read Guides &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Business Operations Stories (Editorial Grid) -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Editorial</p>
+                    <h2 class="text-3xl md:text-4xl font-bold serif-font">Luxury Business Operations</h2>
+                </div>
+                <a href="404.html" class="hidden md:inline-flex items-center text-gold font-medium hover:text-gray-900 transition">
+                    Explore Journal <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+                <!-- Large Item -->
+                <div class="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer h-[300px] md:h-full">
+                    <img src="assets/images/b4696404fe.webp" alt="Business Operations" class="w-full h-full object-cover article-card-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <span class="text-gold text-xs font-bold uppercase tracking-widest mb-2 block">Interior Design</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white serif-font mb-2 group-hover:text-gold transition">The Revival of Mid-Century Modernism</h3>
+                        <p class="text-gray-300 text-sm line-clamp-2">How designers are bringing warm woods and sleek lines back into the most expensive Workspaces in the world.</p>
+                    </div>
+                </div>
+                
+                <!-- Small Item 1 -->
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer h-[250px] md:h-auto">
+                    <img src="assets/images/6ce2658615.webp" alt="Travel" class="w-full h-full object-cover article-card-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <span class="text-gold text-xs font-bold uppercase tracking-widest mb-1 block">Travel</span>
+                        <h3 class="text-lg font-bold text-white serif-font group-hover:text-gold transition">Top 5 Winter Escapes</h3>
+                    </div>
+                </div>
+
+                <!-- Small Item 2 -->
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer h-[250px] md:h-auto">
+                    <img src="assets/images/fb02a33087.webp" alt="Architecture" class="w-full h-full object-cover article-card-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <span class="text-gold text-xs font-bold uppercase tracking-widest mb-1 block">Architecture</span>
+                        <h3 class="text-lg font-bold text-white serif-font group-hover:text-gold transition">Minimalist Masterpieces</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Reads -->
+    <section class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-2xl md:text-3xl font-bold serif-font mb-10 border-b border-gray-300 pb-4">Popular Reads</h2>
+            
+            <div class="space-y-6">
+                <!-- Article 1 -->
+                <a href="404.html" class="flex flex-col sm:flex-row items-center gap-6 group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+                    <img src="assets/images/afc1687888.webp" alt="Thumb" class="w-full sm:w-24 sm:h-24 object-cover rounded-lg">
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-bold serif-font text-gray-900 group-hover:text-gold transition mb-2">The Hidden Costs of Maintaining a Superyacht</h3>
+                        <div class="flex text-xs text-gray-500 font-medium space-x-4">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 8 Min Read</span>
+                            <span><i class="fa-regular fa-eye mr-1"></i> 14.2K Views</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Article 2 -->
+                <a href="404.html" class="flex flex-col sm:flex-row items-center gap-6 group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+                    <img src="assets/images/05e136189a.webp" alt="Thumb" class="w-full sm:w-24 sm:h-24 object-cover rounded-lg">
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-bold serif-font text-gray-900 group-hover:text-gold transition mb-2">Why Celebrity Estates Often Sell Off-Market</h3>
+                        <div class="flex text-xs text-gray-500 font-medium space-x-4">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 5 Min Read</span>
+                            <span><i class="fa-regular fa-eye mr-1"></i> 12.8K Views</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Article 3 -->
+                <a href="404.html" class="flex flex-col sm:flex-row items-center gap-6 group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+                    <img src="assets/images/5f650bda31.webp" alt="Thumb" class="w-full sm:w-24 sm:h-24 object-cover rounded-lg">
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-bold serif-font text-gray-900 group-hover:text-gold transition mb-2">Investing in Infinity Pools: Does it Add Value?</h3>
+                        <div class="flex text-xs text-gray-500 font-medium space-x-4">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 6 Min Read</span>
+                            <span><i class="fa-regular fa-eye mr-1"></i> 10.5K Views</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="py-24 bg-[#0a0f18] text-white border-b border-gray-800">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <i class="fa-regular fa-envelope text-5xl text-gold mb-6"></i>
+            <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">Stay Ahead of the Market</h2>
+            <p class="text-gray-400 mb-10 text-lg">Subscribe to the Stackly Journal for exclusive market insights, property alerts, and Business Operations editorials delivered directly to your inbox.</p>
+            
+            <form id="subscribe-form" class="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto">
+                <input type="email" pattern=".*\.com$" title="Email must end with .com" required  placeholder="Enter your email address" class="w-full sm:w-2/3 bg-gray-800 border border-gray-700 text-white px-6 py-4 rounded-full focus:outline-none focus:border-gold transition">
+                <button type="submit" class="w-full sm:w-1/3 btn-gold font-bold px-8 py-4 flex items-center justify-center group">
+                    Subscribe <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </form>
+            <p class="text-xs text-gray-600 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-bg py-24 text-center text-white relative">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 serif-font leading-tight max-w-3xl mx-auto">Ready to Find Your<br>Next Address?</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="404.html" class="w-full sm:w-auto btn-gold px-10 py-4 font-bold text-sm text-center">
+                    Explore Properties
+                </a>
+                <a href="404.html" class="w-full sm:w-auto border-2 border-white hover:bg-white hover:text-black transition px-10 py-4 rounded-full font-bold text-sm text-center">
+                    Contact an Advisor
+                </a>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="bg-[#111827] text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 text-white mb-6">
+                        <a href="index.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        Providing exclusive access to the world's finest luxury properties. White-glove service tailored to your most exacting standards.
+                    </p>
+                    <div class="flex items-center gap-4 text-lg">
+                        <a href="404.html" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#7c3aed] hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#7c3aed] hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#7c3aed] hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick inks -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="index.html" class="hover:text-[#7c3aed] transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#7c3aed] transition">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-[#7c3aed] transition">Service</a></li>
+                        <li><a href="blog.html" class="hover:text-[#7c3aed] transition">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-[#7c3aed] transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Services -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Property Sales</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Investment Advisory</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Property Management</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">VIP Concierge</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Off-Market Listings</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-[#7c3aed]"></i>
+                            <span>MMR Complex, Chinna Thirupathi,<br>near Chinna Muniyappan Kovil,<br>Salem, Tamil Nadu 636008</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 text-[#7c3aed]"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-[#7c3aed]"></i>
+                            <span>info@stackly.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2026 Stackly. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="404.html" class="hover:text-white transition">Privacy Policy</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="404.html" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky Navbar script
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (nav) {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-gray-900', 'shadow-md');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                    nav.classList.add('bg-transparent');
+                    nav.classList.remove('bg-gray-900', 'shadow-md');
+                }
+            }
+        });
+    </script>
+<!-- Mobile Menu Dropdown -->
+<div id="mobile-menu" class="fixed inset-0 bg-gray-900/95 z-[60] hidden flex-col justify-center items-center space-y-8 text-xl font-medium text-white transition-opacity duration-300">
+    <button id="close-mobile-menu" class="absolute top-8 right-8 text-white hover:text-[#7c3aed] focus:outline-none">
+        <i class="fa-solid fa-xmark text-4xl"></i>
+    </button>
+    <a href="index.html" class="hover:text-[#7c3aed] transition">Home</a>
+    <a href="about.html" class="hover:text-[#7c3aed] transition">About</a>
+    <a href="service.html" class="hover:text-[#7c3aed] transition">Service</a>
+    <a href="blog.html" class="hover:text-[#7c3aed] transition">Blog</a>
+    <a href="contact.html" class="hover:text-[#7c3aed] transition">Contact</a>
+    <a href="login.html" class="mt-4 border border-white hover:bg-white hover:text-black transition px-8 py-3 rounded-full text-lg">Login</a>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        if (closeBtn && mobileMenu) {
+            closeBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        const subscribeForm = document.getElementById('subscribe-form');
+        if (subscribeForm) {
+            subscribeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (subscribeForm.checkValidity()) {
+                    subscribeForm.reset();
+                    window.location.href = '404.html';
+                } else {
+                    subscribeForm.reportValidity();
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

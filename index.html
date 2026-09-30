@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Commercial Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .serif-font { font-family: 'Playfair Display', serif; }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('assets/images/05d87332a8.webp');
+            background-size: cover; background-position: center;
+        }
+        .features-bg { background-color: #1a202c; }
+        .banner-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/780efb166c.webp');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+        .cta-bg { background-color: #0f172a; }
+        .text-gold { color: #7c3aed; }
+        .bg-gold { background-color: #7c3aed; }
+        .hover-bg-gold-dark:hover { background-color: #6d28d9; }
+    </style>
+</head>
+<body class="antialiased text-gray-800 bg-gray-50">
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="fixed w-full z-50 top-0 text-white bg-transparent transition-all duration-300">
+        <div class="container mx-auto px-6 py-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="index.html" class="border-b-2 border-[#7c3aed] pb-1">Home</a>
+                <a href="about.html" class="hover:text-[#7c3aed] transition">About</a>
+                <a href="service.html" class="hover:text-[#7c3aed] transition">Service</a>
+                <a href="blog.html" class="hover:text-[#7c3aed] transition">Blog</a>
+                <a href="contact.html" class="hover:text-[#7c3aed] transition">Contact</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="login.html" class="border border-white hover:bg-white hover:text-black transition px-6 py-2 rounded-full text-sm font-medium">
+                    Login
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-white hover:text-[#7c3aed] focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen min-h-[600px] flex items-center pt-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl text-white">
+                <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-4">Commercial Real Estate</p>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight mt-12 md:mt-0">Find Your Ideal Workspace <br class="hidden md:block">in the World's Most <br class="hidden md:block">Exclusive Locations</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl">Discover extraordinary properties, Exceptional Business environments, and unmatched value with Stackly.</p>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Stackly Section -->
+    <section class="features-bg text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-10">
+                <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Benefits</p>
+                <h2 class="text-3xl font-bold">Why Choose Stackly</h2>
+            </div>
+            <div class   ="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl text-center hover:-translate-y-2 transition duration-300">
+                    <i class="fa-regular fa-gem text-4xl text-gold mb-4"></i>
+                    <h4 class="font-semibold text-lg mb-2">Premium Properties</h4>
+                    <p class="text-sm text-gray-400">Access to the most exclusive and luxurious Workspaces in the market.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-xl text-center hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-check-double text-4xl text-gold mb-4"></i>
+                    <h4 class="font-semibold text-lg mb-2">Verified Listings</h4>
+                    <p class="text-sm text-gray-400">Every property is thoroughly inspected and verified for your peace of mind.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-xl text-center hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-user-tie text-4xl text-gold mb-4"></i>
+                    <h4 class="font-semibold text-lg mb-2">Trusted Advisors</h4>
+                    <p class="text-sm text-gray-400">Expert agents guiding you through every step of the process.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-xl text-center hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-handshake-angle text-4xl text-gold mb-4"></i>
+                    <h4 class="font-semibold text-lg mb-2">Personalized Service</h4>
+                    <p class="text-sm text-gray-400">Tailored solutions matching your unique Business Operations requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Stackly Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="assets/images/3908aeebe7.webp" alt="About Stackly" class="rounded-2xl shadow-2xl object-cover w-full h-[500px]">
+                </div>
+                <div class="lg:w-1/2">
+                    <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">About Stackly</p>
+                    <h2 class="text-4xl font-bold mb-6">Redefining Commercial Real Estate</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        At Stackly, we believe that a workspace is more than just a place to work; it's a reflection of your Business Operations and aspirations. With over a decade of excellence in the Commercial Real Estate market, we have curated a portfolio of the world's most exceptional properties.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Our dedicated team of professionals is committed to providing unparalleled service, ensuring that your journey to finding your Ideal Workspace is seamless and deeply rewarding.
+                    </p>
+                    <a href="404.html" class="inline-block bg-gold hover-bg-gold-dark text-white font-medium rounded-full px-8 py-3 transition shadow-lg">
+                        Discover Our Story
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Categories -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Browse By</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Property Categories</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer group">
+                    <i class="fa-solid fa-house-chimney-window text-4xl text-gold transition mb-4 block"></i>
+                    <h4 class="font-semibold">Premium Offices</h4>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer group">
+                    <i class="fa-solid fa-building text-4xl text-gold transition mb-4 block"></i>
+                    <h4 class="font-semibold">Retail Spaces</h4>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer group">
+                    <i class="fa-solid fa-city text-4xl text-gold transition mb-4 block"></i>
+                    <h4 class="font-semibold">Industrial Parks</h4>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer group">
+                    <i class="fa-solid fa-umbrella-beach text-4xl text-gold transition mb-4 block"></i>
+                    <h4 class="font-semibold">Warehouses</h4>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer group">
+                    <i class="fa-solid fa-store text-4xl text-gold transition mb-4 block"></i>
+                    <h4 class="font-semibold">Commercial</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Destinations -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Locations</p>
+                <h2 class="text-3xl md:text-4xl font-bold">Exclusive Destinations</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-[600px]">
+                <!-- Dubai (Large) -->
+                <div class="md:col-span-2 md:row-span-2 relative rounded-xl overflow-hidden group cursor-pointer h-full">
+                    <img src="assets/images/370ade805f.webp" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Dubai">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h3 class="text-2xl font-bold">Dubai</h3>
+                        <p class="text-sm text-gray-300">45 Properties</p>
+                    </div>
+                </div>
+                
+                <!-- Mumbai -->
+                <div class="relative rounded-xl overflow-hidden group cursor-pointer md:col-span-2 h-[290px]">
+                    <img src="assets/images/08f0986c59.webp" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Mumbai">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h3 class="text-xl font-bold">Mumbai</h3>
+                        <p class="text-sm text-gray-300">32 Properties</p>
+                    </div>
+                </div>
+
+                <!-- London -->
+                <div class="relative rounded-xl overflow-hidden group cursor-pointer h-[290px]">
+                    <img src="assets/images/d841e6c472.webp" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="London">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-lg font-bold">London</h3>
+                    </div>
+                </div>
+
+                <!-- New York -->
+                <div class="relative rounded-xl overflow-hidden group cursor-pointer h-[290px]">
+                    <img src="assets/images/f83a47c270.webp" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="New York">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-lg font-bold">New York</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Singapore added below as an extra if needed, or keeping it to 4 looks better for grid. I will add Singapore below the grid -->
+            <div class="mt-4 relative rounded-xl overflow-hidden group cursor-pointer h-[300px]">
+                <img src="assets/images/02a448a1b1.webp" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Singapore">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                    <h3 class="text-2xl font-bold">Singapore</h3>
+                    <p class="text-sm text-gray-300">28 Properties</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Business Operations Banner -->
+    <section class="banner-bg py-32 text-center text-white relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Where Exceptional Business Begins</h2>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">Experience the pinnacle of luxury business. We provide access to the most exclusive properties that match your sophisticated Business Operations.</p>
+            <a href="404.html" class="inline-block bg-white text-black font-semibold rounded-full px-10 py-4 hover:bg-gray-100 transition shadow-lg">
+                Explore The Collection
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Services -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Expertise</p>
+                <h2 class="text-3xl md:text-4xl font-bold">Our Services</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition text-center border-b-4 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-key text-3xl text-gold mb-4"></i>
+                    <h4 class="font-semibold mb-2">Property Buying</h4>
+                    <p class="text-xs text-gray-500">Find the perfect workspace effortlessly.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition text-center border-b-4 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-tags text-3xl text-gold mb-4"></i>
+                    <h4 class="font-semibold mb-2">Property Selling</h4>
+                    <p class="text-xs text-gray-500">Get the best value for your estate.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition text-center border-b-4 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-clipboard-list text-3xl text-gold mb-4"></i>
+                    <h4 class="font-semibold mb-2">Property Management</h4>
+                    <p class="text-xs text-gray-500">Comprehensive care for your assets.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition text-center border-b-4 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-chart-line text-3xl text-gold mb-4"></i>
+                    <h4 class="font-semibold mb-2">Investment Advisory</h4>
+                    <p class="text-xs text-gray-500">Strategic insights for ROI.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition text-center border-b-4 border-transparent hover:border-gold">
+                    <i class="fa-solid fa-couch text-3xl text-gold mb-4"></i>
+                    <h4 class="font-semibold mb-2">Interior & Styling</h4>
+                    <p class="text-xs text-gray-500">Bespoke designs for your space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Numbers / Statistics -->
+    <section class="py-16 bg-gold text-white">
+        <div class="container mx-auto px-6">
+            <div id="stats-section" class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-white/30">
+                <div class="p-4">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-2"><span class="stat-counter" data-target="500">0</span>+</h3>
+                    <p class="text-sm font-medium uppercase tracking-wider text-white/80">Luxury Properties</p>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-2"><span class="stat-counter" data-target="25">0</span>+</h3>
+                    <p class="text-sm font-medium uppercase tracking-wider text-white/80">Premium Locations</p>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-2"><span class="stat-counter" data-target="1200">0</span>+</h3>
+                    <p class="text-sm font-medium uppercase tracking-wider text-white/80">Happy Clients</p>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-2"><span class="stat-counter" data-target="15">0</span>+</h3>
+                    <p class="text-sm font-medium uppercase tracking-wider text-white/80">Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Testimonials</p>
+                <h2 class="text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-gray-50 p-8 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-right text-4xl text-gray-200 absolute top-6 right-6"></i>
+                    <div class="flex text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Stackly made finding our Ideal Workspace in Dubai an absolute breeze. The level of professionalism and the quality of properties shown to us were unmatched."</p>
+                    <div class="flex items-center">
+                        <img src="assets/images/5967fdb496.webp" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-sm">Michael R.</h4>
+                            <p class="text-xs text-gray-500">Purchased in Dubai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-right text-4xl text-gray-200 absolute top-6 right-6"></i>
+                    <div class="flex text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Their personalized service is what sets them apart. They listened to exactly what we wanted and found us a penthouse in New York that exceeded our expectations."</p>
+                    <div class="flex items-center">
+                        <img src="assets/images/05830464e0.webp" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-sm">Sarah Jenkins</h4>
+                            <p class="text-xs text-gray-500">Purchased in New York</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-50 p-8 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-right text-4xl text-gray-200 absolute top-6 right-6"></i>
+                    <div class="flex text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"The team at Stackly guided us through our commercial real estate investment journey seamlessly. The London property we acquired is a fantastic addition to our portfolio."</p>
+                    <div class="flex items-center">
+                        <img src="assets/images/86cf18f97b.webp" alt="Client" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-sm">David Chen</h4>
+                            <p class="text-xs text-gray-500">Purchased in London</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Commercial Real Estate Insights -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">Our Blog</p>
+                    <h2 class="text-3xl md:text-4xl font-bold">Latest Commercial Real Estate Insights</h2>
+                </div>
+                <a href="404.html" class="text-sm font-medium hover:text-gold transition mt-4 md:mt-0 flex items-center">
+                    View All Posts <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <img src="assets/images/f217425659.webp" alt="Blog" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col flex-grow items-start">
+                        <div class="text-gold text-xs font-bold uppercase mb-2">Market Trends</div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-gold transition cursor-pointer">Global Commercial Real Estate Market Outlook for 2024</h3>
+                        <p class="text-gray-600 text-sm mb-4">Discover the key trends shaping the Commercial Real Estate market globally this year.</p>
+                        <a href="404.html" class="mt-auto inline-flex items-center justify-center bg-gold hover:bg-[#6d28d9] text-white text-sm font-medium rounded-full px-6 py-2.5 transition duration-300 shadow-sm hover:shadow-md group">Read More <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform duration-300"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <img src="assets/images/c498c8339e.webp" alt="Blog" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col flex-grow items-start">
+                        <div class="text-gold text-xs font-bold uppercase mb-2">Luxury business</div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-gold transition cursor-pointer">Top 5 Features Every Modern Corporate Office Must Have</h3>
+                        <p class="text-gray-600 text-sm mb-4">From smart workspace technology to infinity pools, explore the must-haves in luxury Workspaces.</p>
+                        <a href="404.html" class="mt-auto inline-flex items-center justify-center bg-gold hover:bg-[#6d28d9] text-white text-sm font-medium rounded-full px-6 py-2.5 transition duration-300 shadow-sm hover:shadow-md group">Read More <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform duration-300"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <img src="assets/images/6ddd8e4595.webp" alt="Blog" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col flex-grow items-start">
+                        <div class="text-gold text-xs font-bold uppercase mb-2">Property Investment</div>
+                        <h3 class="text-xl font-bold mb-3 hover:text-gold transition cursor-pointer">Why Commercial Real Estate is the Ultimate Safe Haven</h3>
+                        <p class="text-gray-600 text-sm mb-4">An analysis of why investing in premium commercial real estate remains a top choice for investors.</p>
+                        <a href="404.html" class="mt-auto inline-flex items-center justify-center bg-gold hover:bg-[#6d28d9] text-white text-sm font-medium rounded-full px-6 py-2.5 transition duration-300 shadow-sm hover:shadow-md group">Read More <i class="fa-solid fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform duration-300"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-bg py-24 text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Find Your Ideal Workspace?</h2>
+            <p class="text-gray-400 mb-10 max-w-xl mx-auto">Get in touch with our expert commercial real estate advisors today and start your journey towards Exceptional Business.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="404.html" class="bg-gold hover-bg-gold-dark text-white font-medium rounded-full px-8 py-4 transition">
+                    Contact an Agent
+                </a>
+                <a href="404.html" class="border border-gray-600 hover:border-white hover:bg-white hover:text-black font-medium rounded-full px-8 py-4 transition">
+                    Browse Properties
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Basic) -->
+        <!-- Footer -->
+    <footer class="bg-[#111827] text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 text-white mb-6">
+                        <a href="index.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        Providing exclusive access to the world's finest luxury properties. White-glove service tailored to your most exacting standards.
+                    </p>
+                    <div class="flex items-center gap-4 text-lg">
+                        <a href="404.html" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#7c3aed] hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#7c3aed] hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#7c3aed] hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="index.html" class="hover:text-[#7c3aed] transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#7c3aed] transition">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-[#7c3aed] transition">Service</a></li>
+                        <li><a href="blog.html" class="hover:text-[#7c3aed] transition">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-[#7c3aed] transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Services -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Property Sales</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Investment Advisory</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Property Management</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">VIP Concierge</a></li>
+                        <li><a href="404.html" class="hover:text-[#7c3aed] transition">Off-Market Listings</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-[#7c3aed]"></i>
+                            <span>MMR Complex, Chinna Thirupathi,<br>near Chinna Muniyappan Kovil,<br>Salem, Tamil Nadu 636008</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 text-[#7c3aed]"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-[#7c3aed]"></i>
+                            <span>info@stackly.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2026 Stackly. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="404.html" class="hover:text-white transition">Privacy Policy</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="404.html" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky Navbar script
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (nav) {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-gray-900', 'shadow-md');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                    nav.classList.add('bg-transparent');
+                    nav.classList.remove('bg-gray-900', 'shadow-md');
+                }
+            }
+        });
+
+        // Statistics Counter Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.stat-counter');
+            let animationStarted = false;
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let currentCount = 0;
+
+                    const updateCounter = () => {
+                        currentCount += increment;
+                        if (currentCount < target) {
+                            counter.innerText = Math.ceil(currentCount).toLocaleString();
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+                    updateCounter();
+                });
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                const [entry] = entries;
+                if (entry.isIntersecting && !animationStarted) {
+                    animationStarted = true;
+                    animateCounters();
+                }
+            }, { threshold: 0.5 });
+
+            const statsSection = document.getElementById('stats-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+    </script>
+<!-- Mobile Menu Dropdown -->
+<div id="mobile-menu" class="fixed inset-0 bg-gray-900/95 z-[60] hidden flex-col justify-center items-center space-y-8 text-xl font-medium text-white transition-opacity duration-300">
+    <button id="close-mobile-menu" class="absolute top-8 right-8 text-white hover:text-[#7c3aed] focus:outline-none">
+        <i class="fa-solid fa-xmark text-4xl"></i>
+    </button>
+    <a href="index.html" class="hover:text-[#7c3aed] transition">Home</a>
+    <a href="about.html" class="hover:text-[#7c3aed] transition">About</a>
+    <a href="service.html" class="hover:text-[#7c3aed] transition">Service</a>
+    <a href="blog.html" class="hover:text-[#7c3aed] transition">Blog</a>
+    <a href="contact.html" class="hover:text-[#7c3aed] transition">Contact</a>
+    <a href="login.html" class="mt-4 border border-white hover:bg-white hover:text-black transition px-8 py-3 rounded-full text-lg">Login</a>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        if (closeBtn && mobileMenu) {
+            closeBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.style.overflow = '';
+            });
+        }
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

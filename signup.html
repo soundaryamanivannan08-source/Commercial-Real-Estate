@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Stackly Commercial Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .serif-font { font-family: 'Playfair Display', serif; }
+        
+        .text-gold { color: #7c3aed; }
+        .bg-gold { background-color: #7c3aed; }
+        .border-gold { border-color: #7c3aed; }
+        .ring-gold { --tw-ring-color: #7c3aed; }
+
+        .btn-gold {
+            background-color: #7c3aed;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .signup-bg {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.4), rgba(17, 24, 39, 0.8)), url('assets/images/780efb166c.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tab-active {
+            background-color: #111827;
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #f3f4f6;
+            color: #6b7280;
+        }
+        .tab-inactive:hover {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+    </style>
+</head>
+<body class="antialiased bg-white text-gray-800 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <!-- Left Side: Image / Brand -->
+    <div class="hidden md:flex md:w-1/2 lg:w-7/12 signup-bg relative p-12 flex-col justify-between items-start">
+        <div class="flex items-center space-x-2 text-white z-10">
+            <a href="index.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+        </div>
+        
+        <div class="z-10 text-white max-w-xl">
+            <p class="text-gold text-sm font-bold tracking-widest uppercase mb-4">Join Our Network</p>
+            <h1 class="text-5xl lg:text-6xl font-bold serif-font leading-tight mb-6">Discover the Exceptional.</h1>
+            <p class="text-lg text-gray-300 font-light">Create an account to save your favorite listings, receive tailored property alerts, and communicate directly with our luxury advisors.</p>
+        </div>
+    </div>
+
+    <!-- Right Side: Form -->
+    <div class="w-full md:w-1/2 lg:w-5/12 flex flex-col justify-center px-8 md:px-16 py-12 relative min-h-screen bg-white">
+        
+        <!-- Mobile Logo -->
+        <div class="md:hidden flex items-center space-x-2 text-gray-900 mb-12">
+            <a href="index.html" class="hover:opacity-80 transition"><img src="Assest/logo.webp" alt="Stackly Logo" class="h-8 md:h-10 object-contain"></a>
+        </div>
+
+        <a href="index.html" class="absolute top-8 right-8 text-sm font-medium text-gray-500 hover:text-gray-900 transition flex items-center group">
+            <i class="fa-solid fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition-transform"></i> Back to workspace
+        </a>
+
+        <div class="w-full max-w-md mx-auto">
+            <h2 class="text-3xl font-bold serif-font mb-2 text-gray-900">Create Account</h2>
+            <p class="text-sm text-gray-500 mb-8">Please select your role and fill in your details to register.</p>
+
+            <!-- Role Selector -->
+            <div class="flex bg-gray-100 p-1 rounded-xl mb-8">
+                <button type="button" id="role-user" class="w-1/2 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 tab-active">
+                    User
+                </button>
+                <button type="button" id="role-admin" class="w-1/2 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 tab-inactive">
+                    Admin
+                </button>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="space-y-5">
+                <!-- Hidden input to store selected role -->
+                <input type="hidden" id="selected_role" value="user">
+
+                <div>
+                    <label for="username" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Username</label>
+                    <input type="text" id="username" required class="w-full border border-gray-200 rounded-lg px-4 py-3.5 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition bg-gray-50 focus:bg-white" placeholder="Choose a username">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Email Address</label>
+                    <input type="email" pattern=".*\.com$" title="Email must end with .com" required  id="email" required class="w-full border border-gray-200 rounded-lg px-4 py-3.5 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition bg-gray-50 focus:bg-white" placeholder="Enter your email">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" id="password" required class="w-full border border-gray-200 rounded-lg pl-4 pr-12 py-3.5 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition bg-gray-50 focus:bg-white" placeholder="Create a password">
+                        <button type="button" id="togglePassword" class="absolute right-0 top-0 h-full px-4 text-gray-400 hover:text-gold transition focus:outline-none">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="confirm_password" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Confirm Password</label>
+                    <div class="relative">
+                        <input type="password" id="confirm_password" required class="w-full border border-gray-200 rounded-lg pl-4 pr-12 py-3.5 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition bg-gray-50 focus:bg-white" placeholder="Confirm your password">
+                        <button type="button" id="toggleConfirmPassword" class="absolute right-0 top-0 h-full px-4 text-gray-400 hover:text-gold transition focus:outline-none">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-start pt-2">
+                    <div class="flex items-center h-5">
+                        <input type="checkbox" id="terms" required class="w-4 h-4 text-gold border-gray-300 rounded focus:ring-gold accent-[#7c3aed] cursor-pointer">
+                    </div>
+                    <label for="terms" class="ml-2 block text-sm text-gray-600 cursor-pointer">
+                        I accept the <a href="#" class="text-gold hover:underline">Privacy Policy</a> and <a href="#" class="text-gold hover:underline">Terms of Service</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full btn-gold rounded-xl py-4 font-bold text-sm uppercase tracking-wider flex justify-center items-center mt-2">
+                    Register Account
+                </button>
+            </form>
+
+            <p class="mt-8 text-center text-sm text-gray-600">
+                Already have an account? 
+                <a href="login.html" class="font-bold text-gray-900 hover:text-gold transition ml-1">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Role Selector Logic
+        const roleUserBtn = document.getElementById('role-user');
+        const roleAdminBtn = document.getElementById('role-admin');
+        const selectedRoleInput = document.getElementById('selected_role');
+
+        roleUserBtn.addEventListener('click', () => {
+            selectedRoleInput.value = 'user';
+            roleUserBtn.className = 'w-1/2 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 tab-active';
+            roleAdminBtn.className = 'w-1/2 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 tab-inactive';
+        });
+
+        roleAdminBtn.addEventListener('click', () => {
+            selectedRoleInput.value = 'admin';
+            roleAdminBtn.className = 'w-1/2 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 tab-active';
+            roleUserBtn.className = 'w-1/2 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 tab-inactive';
+        });
+
+        // Password Visibility Toggle Logic
+        function setupPasswordToggle(toggleBtnId, inputId) {
+            const toggleBtn = document.getElementById(toggleBtnId);
+            const inputField = document.getElementById(inputId);
+            const icon = toggleBtn.querySelector('i');
+
+            toggleBtn.addEventListener('click', () => {
+                const type = inputField.getAttribute('type') === 'password' ? 'text' : 'password';
+                inputField.setAttribute('type', type);
+                
+                if (type === 'text') {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        }
+
+        setupPasswordToggle('togglePassword', 'password');
+        setupPasswordToggle('toggleConfirmPassword', 'confirm_password');
+
+        // Form Submission Logic
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent actual form submission
+            
+            // Native HTML5 validation (required attributes) is handled automatically before this event fires.
+            // Check if passwords match (optional bonus feature since it's standard, but not strictly required by the prompt)
+            const pwd = document.getElementById('password').value;
+            const confirmPwd = document.getElementById('confirm_password').value;
+            
+            if(pwd !== confirmPwd) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Since this is frontend-only, redirect to login page upon successful registration
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

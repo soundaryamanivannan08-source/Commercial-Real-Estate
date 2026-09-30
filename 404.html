@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Stackly Commercial Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .serif-font { font-family: 'Playfair Display', serif; }
+        .text-gold { color: #7c3aed; }
+        .bg-gold { background-color: #7c3aed; }
+        .border-gold { border-color: #7c3aed; }
+        
+        .btn-gold {
+            background-color: #7c3aed;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-outline {
+            border: 1px solid #7c3aed;
+            color: #7c3aed;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background-color: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .bg-404 {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.95)), url('assets/images/f0b82080c9.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="antialiased bg-gray-900 text-white min-h-screen flex items-center justify-center bg-404 relative">
+    
+
+
+    <div class="container mx-auto px-6 py-10 relative z-10 flex flex-col items-center text-center">
+        
+        <!-- 404 Visual -->
+        <div class="mb-6 relative inline-flex justify-center items-center">
+            <h1 class="text-8xl sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-bold serif-font text-white leading-none tracking-tighter opacity-10 m-0">404</h1>
+            <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold serif-font text-gold absolute inset-0 flex items-center justify-center pointer-events-none m-0">404</h2>
+        </div>
+        
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white serif-font px-4">Lost in the Estate?</h3>
+        <p class="text-gray-300 max-w-lg mb-10 text-sm sm:text-base md:text-lg leading-relaxed px-4">
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let's guide you back to our exclusive portfolio.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
+            <!-- Go Back Button (JavaScript History API) -->
+            <button onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html'" class="w-full sm:w-auto btn-outline px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm uppercase tracking-wider flex items-center justify-center whitespace-nowrap">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Go Back
+            </button>
+            
+            <!-- Back to workspace Button -->
+            <a href="index.html" class="w-full sm:w-auto btn-gold px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm uppercase tracking-wider flex items-center justify-center whitespace-nowrap">
+                Back to workspace <i class="fa-solid fa-house ml-2"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
